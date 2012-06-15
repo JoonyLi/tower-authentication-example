@@ -14,7 +14,7 @@ App.configure ->
     @provider 'twitter', url: 'local.host:1597'
     @provider 'facebook', url: 'local.host:1597'
     @provider 'github', url: 'local.host:1597'
-    #@provider 'google'
+    @provider 'google', url: 'localhost:1597'
     @provider 'linkedin', url: 'local.host:1597'
 
   #@use 'csrf'

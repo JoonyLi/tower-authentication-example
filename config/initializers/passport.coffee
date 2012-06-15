@@ -26,7 +26,14 @@ Tower.Auth =
 
     app = Tower.Application.instance()
 
-    app.get "/auth/#{name}", passport.authenticate(name)
+    params        = {}
+
+    params.scope  = [
+      'https://www.googleapis.com/auth/userinfo.profile'
+      'https://www.googleapis.com/auth/userinfo.email'
+    ] if name == 'google'
+
+    app.get "/auth/#{name}", passport.authenticate(name, params)
 
     app.get "/auth/#{name}/callback", (request, response, next) ->
       passport.authenticate(name, (error, profile, credentials) ->
@@ -54,7 +61,10 @@ Tower.Auth =
 
   oauth2Strategy: (name, options) ->
     try
-      Strategy    = require("passport-#{name}").Strategy
+      if name == 'google'
+        Strategy    = require("passport-#{name}-oauth").OAuth2Strategy
+      else
+        Strategy    = require("passport-#{name}").Strategy
       credentials = Tower.config.credentials[name]
 
       if credentials

@@ -14,6 +14,8 @@ html ->
       div id: 'github-count', '{{App.usersController.githubCount}}'
       a '{{action linkedinAuth target="App.usersController"}}', 'Login with LinkedIn'
       div id: 'linkedin-count', '{{App.usersController.linkedinCount}}'
+      a '{{action googleAuth target="App.usersController"}}', 'Login with Google'
+      div id: 'google-count', '{{App.usersController.googleCount}}'
 
     if hasContentFor 'bottom'
       yields 'bottom'

@@ -17,6 +17,10 @@ class App.UsersController extends Tower.Controller
     App.User.where(linkedinId: '!=': null).count()
   ).property('all.@each')
 
+  googleCount: Ember.computed(->
+    App.User.where(googleId: '!=': null).count()
+  ).property('all.@each')
+
   # or something like this:
   # facebookCountBinding: 'all.length'
 
@@ -31,6 +35,9 @@ class App.UsersController extends Tower.Controller
 
   linkedinAuth: (args) ->
     @auth('linkedin')
+
+  googleAuth: (args) ->
+    @auth('google')
 
   auth: (name) ->
     window.open("http://local.host:1597/auth/#{name}", "SignIn", "width=780,height=410,toolbar=0,scrollbars=0,status=0,resizable=0,location=0,menuBar=0")
