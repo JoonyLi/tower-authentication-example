@@ -91,8 +91,6 @@ Tower.Auth =
         consumerSecret: options.secret
         callbackURL:    "http://#{options.url}/auth/#{name}/callback"
         (token, tokenSecret, profile, callback) ->
-          console.log arguments
-          console.log "CALLBACK!!!!!!"
           info =
             key:    token
             secret: tokenSecret
