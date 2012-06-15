@@ -7,6 +7,7 @@ html ->
     #  javascriptTag 'http://html5shiv.googlecode.com/svn/trunk/html5.js'
     script type: 'text/x-handlebars', 'data-template-name': 'application', ->
       linkTo 'Login with Facebook', '/auth/facebook'
+      div id: 'facebook-count', '{{App.usersController.facebookCount}} (open up multiple browsers and see)'
 
     if hasContentFor 'bottom'
       yields 'bottom'

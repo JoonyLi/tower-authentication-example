@@ -3,9 +3,12 @@ class App.User extends Tower.Model
 
   @timestamps()
 
+  @scope 'facebook', facebookId: '!=': null
+
   @findOrCreateFromSession: (data, callback) ->
     @findFromSession data, (error, user) =>
-      if user && user instanceof Tower.Model
+      # always create for now...
+      if user && user instanceof Tower.Model && user == true
         callback.call(@, error, user)
       else
         @createFromSession(data, callback)

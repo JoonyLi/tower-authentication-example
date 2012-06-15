@@ -861,10 +861,7 @@
         }
       };
     },
-    include: function(self, object) {
-      console.log(self)
-      try {console.log(object.included)} catch (e) { console.log(e.stack)}
-      
+    include: function(self, object) { 
       var ClassMethods, InstanceMethods, included;
       included = object.included;
       ClassMethods = object.ClassMethods;
@@ -2077,7 +2074,7 @@
       }
       this.listening = true;
       Tower.Net.Connection.initialize();
-      Tower.Net.Connection.listen('http://localhost:3000');
+      Tower.Net.Connection.listen('http://local.host:1597');
       if (Tower.history && Tower.history.enabled) {
         Tower.history.Adapter.bind(global, "statechange", function() {
           var location, params, request, response, state;
@@ -2709,7 +2706,8 @@
     loadOne: function(record) {
       record.persistent = true;
       record.set('isNew', false);
-      return this.records.set(record.get('id'), record);
+      this.records.set(record.get('id'), record);
+      return record;
     },
     insert: function(criteria, callback) {
       var object, result, _i, _len, _ref;
@@ -11897,6 +11895,8 @@
     __defineProperty(Connection,  "connect", function() {
       var _this = this;
       this.on('sync', function(data) {
+        console.log("SYNC")
+        console.log(data);
         if (!Tower.Net.Connection.transport.requesting) {
           return _this.serverDidChange(data);
         }
@@ -11944,8 +11944,10 @@
 
     __defineProperty(Connection,  "serverDidCreate", function(data) {
       try {
-        return Tower.constant(data.type).load(data.records);
-      } catch (_error) {}
+        console.log(data.records.concat())
+        Tower.constant(data.type).load(data.records);
+        console.log('loaded!')
+      } catch (_error) {console.log(_error)}
     });
 
     __defineProperty(Connection,  "serverDidUpdate", function(data) {
@@ -11957,6 +11959,8 @@
     __defineProperty(Connection,  "serverDidDestroy", function(data) {});
 
     __defineProperty(Connection,  "clientDidLoad", function(records) {
+      console.log("LOAD")
+      console.log(records)
       return this.resolve('create', records);
     });
 
