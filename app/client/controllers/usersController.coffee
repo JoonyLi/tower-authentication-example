@@ -2,13 +2,36 @@ class App.UsersController extends Tower.Controller
   @scope 'all'
 
   facebookCount: Ember.computed(->
-    @get('all').count()
+    App.User.where(facebookId: '!=': null).count()
+  ).property('all.@each')
+
+  twitterCount: Ember.computed(->
+    App.User.where(twitterId: '!=': null).count()
+  ).property('all.@each')
+
+  githubCount: Ember.computed(->
+    App.User.where(githubId: '!=': null).count()
+  ).property('all.@each')
+
+  linkedinCount: Ember.computed(->
+    App.User.where(linkedinId: '!=': null).count()
   ).property('all.@each')
 
   # or something like this:
   # facebookCountBinding: 'all.length'
 
-  authenticate: ->
-    window.open("http://local.host:1597/auth/facebook", "SignIn", "width=780,height=410,toolbar=0,scrollbars=0,status=0,resizable=0,location=0,menuBar=0")
+  facebookAuth: (args) ->
+    @auth('facebook')
 
+  twitterAuth: (args) ->
+    @auth('twitter')
+
+  githubAuth: (args) ->
+    @auth('github')
+
+  linkedinAuth: (args) ->
+    @auth('linkedin')
+
+  auth: (name) ->
+    window.open("http://local.host:1597/auth/#{name}", "SignIn", "width=780,height=410,toolbar=0,scrollbars=0,status=0,resizable=0,location=0,menuBar=0")
     false

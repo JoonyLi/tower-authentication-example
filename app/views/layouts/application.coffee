@@ -6,8 +6,14 @@ html ->
     #if browserIs 'ie'
     #  javascriptTag 'http://html5shiv.googlecode.com/svn/trunk/html5.js'
     script type: 'text/x-handlebars', 'data-template-name': 'application', ->
-      a '{{action authenticate target="App.usersController"}}', 'Login with Facebook'
+      a '{{action facebookAuth target="App.usersController"}}', 'Login with Facebook'
       div id: 'facebook-count', '{{App.usersController.facebookCount}} (open up multiple browsers and see)'
+      a '{{action twitterAuth target="App.usersController"}}', 'Login with Twitter'
+      div id: 'twitter-count', '{{App.usersController.twitterCount}}'
+      a '{{action githubAuth target="App.usersController"}}', 'Login with GitHub'
+      div id: 'github-count', '{{App.usersController.githubCount}}'
+      a '{{action linkedinAuth target="App.usersController"}}', 'Login with LinkedIn'
+      div id: 'linkedin-count', '{{App.usersController.linkedinCount}}'
 
     if hasContentFor 'bottom'
       yields 'bottom'

@@ -1,5 +1,8 @@
 class App.User extends Tower.Model
   @field 'facebookId'
+  @field 'twitterId'
+  @field 'githubId'
+  @field 'linkedinId'
 
   @timestamps()
 
