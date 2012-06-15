@@ -1,9 +1,9 @@
 {
-  "name": "tower-passport-example",
+  "name": "tower-authentication-example",
   "private": true,
   "version": "0.0.1",
   "description": "",
-  "homepage": "http://viatropos.github.com/tower-passport-example",
+  "homepage": "http://viatropos.github.com/tower-authentication-example",
   "main": "./server.js",
   "author": "Lance Pollard <lancejpollard@gmail.com>",
   "keywords": [
@@ -23,11 +23,11 @@
     }
   ],
   "bugs": {
-    "url": "https://github.com/viatropos/tower-passport-example/issues"
+    "url": "https://github.com/viatropos/tower-authentication-example/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/viatropos/tower-passport-example.git"
+    "url": "https://github.com/viatropos/tower-authentication-example.git"
   },
   "engines": {
     "node": ">= 0.4.0",

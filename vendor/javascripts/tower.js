@@ -11895,8 +11895,6 @@
     __defineProperty(Connection,  "connect", function() {
       var _this = this;
       this.on('sync', function(data) {
-        console.log("SYNC")
-        console.log(data);
         if (!Tower.Net.Connection.transport.requesting) {
           return _this.serverDidChange(data);
         }
@@ -11944,9 +11942,7 @@
 
     __defineProperty(Connection,  "serverDidCreate", function(data) {
       try {
-        console.log(data.records.concat())
         Tower.constant(data.type).load(data.records);
-        console.log('loaded!')
       } catch (_error) {console.log(_error)}
     });
 
@@ -11959,8 +11955,6 @@
     __defineProperty(Connection,  "serverDidDestroy", function(data) {});
 
     __defineProperty(Connection,  "clientDidLoad", function(records) {
-      console.log("LOAD")
-      console.log(records)
       return this.resolve('create', records);
     });
 

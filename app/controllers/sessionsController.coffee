@@ -6,7 +6,7 @@ class App.SessionsController extends Tower.Controller
   create: ->
     console.log @request.authHash
     App.User.findOrCreateFromSession @request.authHash, (error, user) =>
-      @render json: user
+      @render 'shared/_close'
 
   destroy: ->
     @request.logout()

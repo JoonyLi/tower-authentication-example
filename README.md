@@ -52,5 +52,3 @@ class App.SessionsController extends Tower.Controller
 - login with any of passport's strategies
 - send email once to users if they login with email
 - show counter on icons for each provider to show how many have logged in.
-
-If anyone knows how to make it so you can authenticate with the oauth/openid services **without redirecting** (such as through a popup or iframe while staying on the login page), I would LOVE to know. I'm not sure if that's possible.
